@@ -1,0 +1,14 @@
+{
+  "name": "nasa-cme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/google-apps-script": "0.0.27"
+  }
+}

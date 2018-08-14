@@ -1,0 +1,14 @@
+{
+  "dataStudio": {
+    "name": "NASA Coronal Mass Ejections",
+    "logoUrl": "https://api.nasa.gov/images/logo.png",
+    "company": "WeDoDataStuff.com",
+    "companyUrl": "https://wedodatastuff.com",
+    "addonUrl": "https://github.com/wedodatastuff/nasa-coronal-mass-ejections",
+    "supportUrl": "https://github.com/wedodatastuff/nasa-coronal-mass-ejections",
+    "description": "NASA's Open API provides data on coronal mass ejections: eruptions in the outer solar atmosphere that send plasma hurling into space.",
+    "authType": ["KEY"],
+    "feeType": ["FREE"]
+  },
+  "urlFetchWhitelist": ["https://api.nasa.gov/"]
+}
