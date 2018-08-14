@@ -32,7 +32,7 @@ interface GetAuthTypeResponse {
   type: AuthType;
 }
 
-interface SetCredentialsRequest {
+interface KeyUserPassCredentials {
   key?: string;
   userPass?: UserPass;
 }
