@@ -752,7 +752,6 @@ function transformData(request: GetDataRequest, data: any): DataRow[] {
         break;
       }
     }
-
     if (!itemAnalysis) {
       itemAnalysis = item.cmeAnalyses[0];
     }
@@ -760,7 +759,7 @@ function transformData(request: GetDataRequest, data: any): DataRow[] {
     const values = [];
     for (let k = 0; k < request.fields.length; k++) {
       const field = request.fields[k];
-      values.push(FIELD_MAPPING[field.name](item, itemAnalysis));
+      values.push(DATA_TO_SCHEMA_MAP[field.name](item, itemAnalysis));
     }
 
     rows.push({ values: values });
@@ -770,44 +769,19 @@ function transformData(request: GetDataRequest, data: any): DataRow[] {
   return rows;
 }
 
-const FIELD_MAPPING = {
-  activityID: function(i, ia) {
-    return i.activityID;
-  },
-  startTime: function(i, ia) {
-    return dateToYMDH(new Date(i.startTime));
-  },
-  sourceLocation: function(i, ia) {
-    return i.sourceLocation;
-  },
-  activeRegionNum: function(i, ia) {
-    return i.activeRegionNum;
-  },
-  cmeAnalysisTime21_5: function(i, ia) {
-    return dateToYMDH(new Date(ia.time21_5));
-  },
-  cmeAnalysisLatitudeLongitude: function(i, ia) {
-    return "" + ia.latitude + "," + ia.longitude;
-  },
-  cmeAnalysisHalfAngle: function(i, ia) {
-    return ia.halfAngle;
-  },
-  cmeAnalysisSpeed: function(i, ia) {
-    return ia.speed;
-  },
-  cmeAnalysisType: function(i, ia) {
-    return ia.type;
-  },
-  cmeAnalysisNote: function(i, ia) {
-    return ia.note;
-  },
-  cmeAnalysisLevelOfData: function(i, ia) {
-    return ia.levelOfData;
-  },
-  note: function(i, ia) {
-    return i.note;
-  },
-  catalog: function(i, ia) {
-    return i.catalog;
-  }
+const DATA_TO_SCHEMA_MAP = {
+  activityID: (i, ia) => i.activityID,
+  startTime: (i, ia) => dateToYMDH(new Date(i.startTime)),
+  sourceLocation: (i, ia) => i.sourceLocation,
+  activeRegionNum: (i, ia) => i.activeRegionNum,
+  cmeAnalysisTime21_5: (i, ia) => dateToYMDH(new Date(ia.time21_5)),
+  cmeAnalysisLatitudeLongitude: (i, ia) =>
+    "" + ia.latitude + "," + ia.longitude,
+  cmeAnalysisHalfAngle: (i, ia) => ia.halfAngle,
+  cmeAnalysisSpeed: (i, ia) => ia.speed,
+  cmeAnalysisType: (i, ia) => ia.type,
+  cmeAnalysisNote: (i, ia) => ia.note,
+  cmeAnalysisLevelOfData: (i, ia) => ia.levelOfData,
+  note: (i, ia) => i.note,
+  catalog: (i, ia) => i.catalog
 };
